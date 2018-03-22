@@ -1,2 +1,0 @@
-# SweetSugar
-Experimental android application
