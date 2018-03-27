@@ -113,6 +113,11 @@ public class PlacesActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToCityPhotoActivity(View view) {
+        Intent intent = new Intent(this, CityPhotoActivity.class);
+        startActivity(intent);
+    }
+
     public void addToPlaces(View view) {
         cad.addCity();
     }

@@ -1,5 +1,6 @@
 package ch.epfl.sweng.sweetsugar;
 
+import android.graphics.Bitmap;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -74,7 +75,11 @@ public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.CityViewHo
     @Override
     public void onBindViewHolder(CityViewHolder cvh, int i) {
         cvh.cityName.setText(cities.get(i).getCityName());
-        cvh.cityImage.setImageResource(cities.get(i).getPhotoId());
+        if(cities.get(i).getCityPhoto() == null) {
+            cvh.cityImage.setImageResource(cities.get(i).getPhotoId());
+        } else {
+            cvh.cityImage.setImageBitmap(cities.get(i).getCityPhoto());
+        }
         cvh.ratingBar.setRating(cities.get(i).getRating());
         cvh.toggleButton.setChecked(cities.get(i).getCityRecommendation());
     }
@@ -89,9 +94,13 @@ public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.CityViewHo
         notifyItemInserted(cities.size()-1);
     }
 
-    public void addSpecificCity(CharSequence cityName) {
+    public void addSpecificCity(CharSequence cityName, Bitmap placePhoto) {
         cities.clear();
-        cities.add(new City(cityName.toString(), "", 4, R.drawable.lausanne, true));
+        if(placePhoto == null) {
+            cities.add(new City(cityName.toString(), "", 4, R.drawable.lausanne, true));
+        } else {
+            cities.add(new City(cityName.toString(), "", 4, placePhoto, true));
+        }
         notifyDataSetChanged();
     }
 }

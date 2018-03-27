@@ -1,5 +1,7 @@
 package ch.epfl.sweng.sweetsugar;
 
+import android.graphics.Bitmap;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +14,7 @@ public class City {
     private final String description;
     private int rating;
     private int photoId;
+    private Bitmap photo;
     private boolean recommended;
 
     public City(String cityName, String description, int rating, int photoId, boolean recommended) {
@@ -19,6 +22,14 @@ public class City {
         this.description = description;
         this.rating = rating;
         this.photoId = photoId;
+        this.recommended = recommended;
+    }
+
+    public City(String cityName, String description, int rating, Bitmap photo, boolean recommended) {
+        this.cityName = cityName;
+        this.description = description;
+        this.rating = rating;
+        this.photo = photo;
         this.recommended = recommended;
     }
 
@@ -40,6 +51,10 @@ public class City {
 
     public boolean getCityRecommendation() {
         return recommended;
+    }
+
+    public Bitmap getCityPhoto() {
+        return photo;
     }
 
 }

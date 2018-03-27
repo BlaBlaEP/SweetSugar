@@ -44,7 +44,8 @@
         <activity android:name=".MapsActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".CitySearchActivity"></activity>
+        <activity android:name=".CitySearchActivity" />
+        <activity android:name=".CityPhotoActivity"></activity>
     </application>
 
 </manifest>
